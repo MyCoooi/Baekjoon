@@ -12,7 +12,7 @@ int main() {
     stack[n] = 1000000001;
 
     int idx = 0;
-    int sum = 0;
+    unsigned long long sum = 0;
     while(idx < n) {
         int curHeight = stack[idx];
         int tmp = idx+1;
@@ -20,17 +20,12 @@ int main() {
             int nextHeight = stack[tmp];
 
             if (curHeight > nextHeight) tmp++;
-            else if (curHeight == nextHeight) {
-                tmp++;
+            else {
                 break;
             }
-            else { // curHeight < nextHeight
-                break;
-            }
-
-            stack[idx] = tmp-idx-1;
-            sum += tmp-idx-1;
         }
+        // stack[idx] = tmp-idx-1;
+        sum += tmp-idx-1;
         idx++;
     }
     cout << sum;
