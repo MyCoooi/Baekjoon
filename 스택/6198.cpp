@@ -5,28 +5,26 @@ int main() {
     int n;
     cin >> n;
 
-    int stack[80001];
+    int dp[80001] = {0,};
+    long long ans = 0;
+    int curIdx = 0;
     for (int i = 0; i < n; i++) {
-        cin >> stack[i];
-    }
-    stack[n] = 1000000001;
+        cin >> dp[curIdx];
 
-    int idx = 0;
-    unsigned long long sum = 0;
-    while(idx < n) {
-        int curHeight = stack[idx];
-        int tmp = idx+1;
-        while(true) {
-            int nextHeight = stack[tmp];
-
-            if (curHeight > nextHeight) tmp++;
+        while (curIdx != 0) {
+            if(dp[curIdx] >= dp[curIdx-1]) {
+                dp[curIdx-1] = dp[curIdx];
+                dp[curIdx] = 0;
+                curIdx--;
+            }
             else {
+                curIdx++;
                 break;
             }
         }
-        // stack[idx] = tmp-idx-1;
-        sum += tmp-idx-1;
-        idx++;
+        if (curIdx == 0) curIdx++;
+
+        ans += curIdx-1;
     }
-    cout << sum;
+    cout << ans;   
 }
