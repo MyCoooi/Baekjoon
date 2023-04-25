@@ -4,6 +4,9 @@
 using namespace std;
 
 int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    
     string inS; // 문자열을 한번에 받아오는게 장치 입출력 횟수를 줄여줘서 시간이 빠를 듯.
     getline(cin, inS);
 
