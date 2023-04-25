@@ -6,12 +6,12 @@ using namespace std;
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(0);
-    
-    string inS; // 문자열을 한번에 받아오는게 장치 입출력 횟수를 줄여줘서 시간이 빠를 듯.
+
+    string inS;
     getline(cin, inS);
 
     bool isTag = false;
-    string outS; // 출력할 문자열. 문자열을 한번에 출력하기 위해
+    string outS; // 출력할 문자열.
     stack<char> s; // 단어를 저장하는 스택
 
     for (int i = 0; i < inS.length(); i++) {
