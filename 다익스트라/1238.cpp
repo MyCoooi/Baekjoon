@@ -18,14 +18,15 @@ int main() {
     scanf("%d %d %d", &startP, &endP, &t);
     graph[startP].push_back(make_pair(endP, t));
   }
+  
+  int ans = -1;
   for (int i = 1; i <= N; i++) {
     if (i == X) continue;
     int goPartyTime = dijkstra(i, X); // i 정점에서 파티장 X까지 가는 최단시간
-    printf("%d -> %d 최단 시간: %d\n", i, X, goPartyTime);
-
-    int goHomeTime = dijkstra(X, i);
-    printf("%d -> %d 최단 시간: %d\n", X, i, goHomeTime); // 파티장 X에서 i 정점까지 가는 최단시간
+    int goHomeTime = dijkstra(X, i); // 파티장 X에서 i 정점까지 가는 최단시간
+    ans = max(ans, goPartyTime + goHomeTime);
   }
+  printf("%d", ans);
 }
 
 int dijkstra(int node, int end) {
